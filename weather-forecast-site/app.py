@@ -181,6 +181,11 @@ def index():
         for key in request.form:
             if key.startswith("point"):
                 location = request.form[key]
+                if not re.match(r'^[A-Za-zА-Яа-яЁё\s\-]+$', location):
+                    return render_template(
+                        "index.html",
+                        error="Некорректный ввод"
+                    )
                 weather_data = get_weather(location, get_cached=DEBUG)
                 points.append({"location": location, "weather": weather_data})
 

@@ -20,6 +20,13 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Погода на маршруте</h1>
+        
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        
         <form method="POST">
             <div id="cities-container">
                 <div class="form-group city-input">
